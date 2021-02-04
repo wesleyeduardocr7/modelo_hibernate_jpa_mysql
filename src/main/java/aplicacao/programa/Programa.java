@@ -1,27 +1,30 @@
 package aplicacao.programa;
-import aplicacao.dominio.Pessoa;
-import aplicacao.negocio.PessoaNegocioImpl;
+import aplicacao.dominio.Colaborador;
+import aplicacao.negocio.ColaboradorNegocioImpl;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Programa {
 
-
-	private static PessoaNegocioImpl pessoaNegocioImpl = new PessoaNegocioImpl();
+	private static ColaboradorNegocioImpl colaboradorNegocio = new ColaboradorNegocioImpl();
 
 	public static void main(String[] args) {
 
+		//Colaborador colaborador = new Colaborador(null,"Wesley2" ,"SI161300121",new BigDecimal(3500));
+		//colaboradorNegocio.salva(colaborador);
+		//System.out.println(colaborador.toString());
 
-		Pessoa pessoa = new Pessoa(null,"Teste3" ,"teste3","teste3");
-		pessoaNegocioImpl.salva(pessoa);
+		//Colaborador colaborador = colaboradorNegocio.recuperarPor(Long.valueOf(2));
+		//System.out.println(colaborador.toString());
 
-		//Pessoa pessoa = pessoaNegocioImpl.recuperarPor(Long.valueOf(1));
+		//List<Colaborador> colaboradores = colaboradorNegocio.recuperar();
+		//System.out.println(colaboradores.toString());
 
-		//List<Pessoa> pessoas = pessoaNegocioImpl.recuperar();
+		//Colaborador colaboradorAlterado = new Colaborador(Long.valueOf(1),"Update","Update", new BigDecimal(4500));
+		//colaboradorNegocio.altera(colaboradorAlterado);
+		//System.out.println(colaboradorAlterado.toString());
 
-		//Pessoa novaPessoa = new Pessoa(Long.valueOf(1),"Updata","Update","Update");
-		//pessoaNegocioImpl.altera(novaPessoa);
-
-		//pessoaNegocioImpl.excluir(Long.valueOf(3));
+		colaboradorNegocio.excluir(Long.valueOf(3));
 
 		System.out.println("Transação Concluída");
 	}

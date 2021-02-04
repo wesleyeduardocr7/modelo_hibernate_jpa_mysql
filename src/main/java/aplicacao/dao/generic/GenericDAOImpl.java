@@ -14,13 +14,12 @@ public class GenericDAOImpl<T, K extends Serializable> implements GenericDAO<T, 
             + "acessar a base de dados. Tente novamente mais tarde.";
 
     protected Class<T> claz;
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("teste_tecnico_java");
+    private EntityManager em = emf.createEntityManager();
 
     public GenericDAOImpl() {
         this.claz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
-
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
-    private EntityManager em = emf.createEntityManager();
 
     public EntityManager getEntity() {
         return em;
