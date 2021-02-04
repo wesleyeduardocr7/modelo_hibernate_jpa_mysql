@@ -1,7 +1,6 @@
 package aplicacao.dao.colaborador;
 import aplicacao.dao.generic.GenericDAOImpl;
 import aplicacao.dominio.Colaborador;
-
 import javax.persistence.Query;
 import java.util.List;
 

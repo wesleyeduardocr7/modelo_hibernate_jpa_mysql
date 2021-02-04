@@ -60,6 +60,8 @@ public class GenericDAOImpl<T, K extends Serializable> implements GenericDAO<T, 
         }
     }
 
+
+
     @Override
     public void salvar(T obj) throws Exception {
         try {

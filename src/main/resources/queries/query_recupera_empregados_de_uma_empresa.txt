@@ -1,0 +1,2 @@
+select e.id_empresa, e.nome_fantasia , c.id, c.nome, c.salario
+	from empresa e inner join colaborador c on c.id_empresa = e.id_empresa where e.id_empresa = :id_empresa
