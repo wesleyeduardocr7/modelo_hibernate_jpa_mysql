@@ -1,25 +1,28 @@
 package aplicacao.programa;
 import aplicacao.dominio.Pessoa;
-import aplicacao.negocio.PessoaNegocio;
+import aplicacao.negocio.PessoaNegocioImpl;
+import java.util.List;
 
 public class Programa {
 
 
-	private static PessoaNegocio pessoaNegocio = new PessoaNegocio();
+	private static PessoaNegocioImpl pessoaNegocioImpl = new PessoaNegocioImpl();
 
 	public static void main(String[] args) {
 
-		Pessoa pessoa = new Pessoa(null,"Gabriel" ,"Andre","São Luís");
-		pessoaNegocio.salva(pessoa);
 
-		//Pessoa pessoa = pessoaNegocio.pesquisaPor(Long.valueOf(2));
+		Pessoa pessoa = new Pessoa(null,"Teste3" ,"teste3","teste3");
+		pessoaNegocioImpl.salva(pessoa);
 
-		//Pessoa novaPessoa = new Pessoa(Long.valueOf(2),"teste","teste","tesate");
-		//pessoaNegocio.atualiza(novaPessoa);
+		//Pessoa pessoa = pessoaNegocioImpl.recuperarPor(Long.valueOf(1));
 
-		//pessoaNegocio.remove(Long.valueOf(2));
+		//List<Pessoa> pessoas = pessoaNegocioImpl.recuperar();
+
+		//Pessoa novaPessoa = new Pessoa(Long.valueOf(1),"Updata","Update","Update");
+		//pessoaNegocioImpl.altera(novaPessoa);
+
+		//pessoaNegocioImpl.excluir(Long.valueOf(3));
 
 		System.out.println("Transação Concluída");
-
 	}
 }
