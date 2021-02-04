@@ -21,6 +21,10 @@ public class Colaborador implements Serializable{
 	@Column(name = "salario", scale = 6)
 	private BigDecimal salario;
 
+	@ManyToOne
+	@JoinColumn(name = "id_empresa")
+	private Empresa empresa;
+
 	public Colaborador() {
 	}
 
@@ -63,6 +67,14 @@ public class Colaborador implements Serializable{
 		this.salario = salario;
 	}
 
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -83,6 +95,7 @@ public class Colaborador implements Serializable{
 				", nome='" + nome + '\'' +
 				", matricula='" + matricula + '\'' +
 				", salario=" + salario +
+				", empresa=" + empresa.toString() +
 				'}';
 	}
 }

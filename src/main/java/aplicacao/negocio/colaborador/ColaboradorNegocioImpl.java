@@ -1,8 +1,6 @@
-package aplicacao.negocio;
-
+package aplicacao.negocio.colaborador;
 import aplicacao.dao.colaborador.ColaboradorDAOImpl;
 import aplicacao.dominio.Colaborador;
-
 import java.util.ArrayList;
 import java.util.List;
 

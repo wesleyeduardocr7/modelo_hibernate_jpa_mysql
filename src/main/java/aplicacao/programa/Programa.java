@@ -1,18 +1,25 @@
 package aplicacao.programa;
 import aplicacao.dominio.Colaborador;
-import aplicacao.negocio.ColaboradorNegocioImpl;
+import aplicacao.dominio.Empresa;
+import aplicacao.negocio.colaborador.ColaboradorNegocioImpl;
+import aplicacao.negocio.empresa.EmpresaNegocioImpl;
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Programa {
 
 	private static ColaboradorNegocioImpl colaboradorNegocio = new ColaboradorNegocioImpl();
+	private static EmpresaNegocioImpl empresaNegocio = new EmpresaNegocioImpl();
 
 	public static void main(String[] args) {
 
-		//Colaborador colaborador = new Colaborador(null,"Wesley2" ,"SI161300121",new BigDecimal(3500));
-		//colaboradorNegocio.salva(colaborador);
-		//System.out.println(colaborador.toString());
+		Empresa empresa = new Empresa(null,"WesleyTI","565655565","São Luís");
+		empresaNegocio.salva(empresa);
+		System.out.println("emp1 = " + empresa.toString() + "\n");
+
+		Colaborador colaborador01 = new Colaborador(null,"Luis" ,"SI161300121",new BigDecimal(5500));
+		colaborador01.setEmpresa(empresa);
+		colaboradorNegocio.salva(colaborador01);
+		System.out.println("c1 = " + colaborador01.toString() + "\n");
 
 		//Colaborador colaborador = colaboradorNegocio.recuperarPor(Long.valueOf(2));
 		//System.out.println(colaborador.toString());
@@ -24,7 +31,7 @@ public class Programa {
 		//colaboradorNegocio.altera(colaboradorAlterado);
 		//System.out.println(colaboradorAlterado.toString());
 
-		colaboradorNegocio.excluir(Long.valueOf(3));
+		//colaboradorNegocio.excluir(Long.valueOf(3));
 
 		System.out.println("Transação Concluída");
 	}

@@ -1,4 +1,4 @@
-package aplicacao.negocio;
+package aplicacao.negocio.colaborador;
 import aplicacao.dominio.Colaborador;
 import java.util.List;
 
