@@ -1,8 +1,13 @@
 package aplicacao.programa;
+import aplicacao.dominio.Colaborador;
+import aplicacao.dominio.Empresa;
+import aplicacao.dominio.TipoColaborador;
 import aplicacao.dto.EmpregadoDTO;
 import aplicacao.negocio.colaborador.ColaboradorNegocioImpl;
 import aplicacao.negocio.empregado.EmpregadoNegocioImpl;
 import aplicacao.negocio.empresa.EmpresaNegocioImpl;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Programa {
@@ -14,16 +19,16 @@ public class Programa {
 
     public static void main(String[] args) {
 
-        //Empresa empresa = new Empresa(null,"WesleyTI","565655565","São Luís");
-        //empresaNegocio.salva(empresa);
-        //System.out.println("emp1 = " + empresa.toString() + "\n");
+        Empresa empresa = new Empresa(null,"WesleyTI","565655565","São Luís");
+        empresaNegocio.salva(empresa);
+        System.out.println("emp1 = " + empresa.toString() + "\n");
 
-        //Colaborador colaborador01 = new Colaborador(null,"Luis" ,"SI161300121",new BigDecimal(5500));
-        //colaborador01.setEmpresa(empresa);
-        //colaboradorNegocio.salva(colaborador01);
-        //System.out.println("c1 = " + colaborador01.toString() + "\n");
+        Colaborador colaborador01 = new Colaborador(null,"Luis" ,"SI161300121",new BigDecimal(5500), TipoColaborador.CLT);
+        colaborador01.setEmpresa(empresa);
+        colaboradorNegocio.salva(colaborador01);
+        System.out.println("c1 = " + colaborador01.toString() + "\n");
 
-        List<EmpregadoDTO> empregadoDTOS = empregadoNegocio.recuperarEmpregadosDTOSPor(Long.valueOf(5));
+        /*List<EmpregadoDTO> empregadoDTOS = empregadoNegocio.recuperarEmpregadosDTOSPor(Long.valueOf(5));
 
         if ((empregadoDTOS.isEmpty())) {
             System.out.println("Lista de Empregados Vazio");
@@ -31,7 +36,7 @@ public class Programa {
             empregadoDTOS.forEach(empregadoDTO -> {
                 System.out.println(empregadoDTO.toString());
             });
-        }
+        }*/
 
         //Colaborador colaborador = colaboradorNegocio.recuperarPor(Long.valueOf(2));
         //System.out.println(colaborador.toString());

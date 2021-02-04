@@ -21,6 +21,9 @@ public class Colaborador implements Serializable{
 	@Column(name = "salario", scale = 6)
 	private BigDecimal salario;
 
+	@Column(name = "tipo_colaborador")
+	private TipoColaborador tipoColaborador;
+
 	@ManyToOne
 	@JoinColumn(name = "id_empresa")
 	private Empresa empresa;
@@ -28,11 +31,12 @@ public class Colaborador implements Serializable{
 	public Colaborador() {
 	}
 
-	public Colaborador(Long id, String nome, String matricula, BigDecimal salario) {
+	public Colaborador(Long id, String nome, String matricula, BigDecimal salario, TipoColaborador tipoColaborador) {
 		this.id = id;
 		this.nome = nome;
 		this.matricula = matricula;
 		this.salario = salario;
+		this.tipoColaborador = tipoColaborador;
 	}
 
 	public Long getId() {
@@ -67,6 +71,14 @@ public class Colaborador implements Serializable{
 		this.salario = salario;
 	}
 
+	public TipoColaborador getTipoColaborador() {
+		return tipoColaborador;
+	}
+
+	public void setTipoColaborador(TipoColaborador tipoColaborador) {
+		this.tipoColaborador = tipoColaborador;
+	}
+
 	public Empresa getEmpresa() {
 		return empresa;
 	}
@@ -95,6 +107,7 @@ public class Colaborador implements Serializable{
 				", nome='" + nome + '\'' +
 				", matricula='" + matricula + '\'' +
 				", salario=" + salario +
+				", tipoColaborador=" + tipoColaborador.getDescricao() +
 				", empresa=" + empresa.toString() +
 				'}';
 	}
