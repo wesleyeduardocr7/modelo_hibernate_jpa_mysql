@@ -1,7 +1,6 @@
 package aplicacao.negocio;
-
 import aplicacao.dao.PessoaDAO;
-import dominio.Pessoa;
+import aplicacao.dominio.Pessoa;
 
 public class PessoaNegocio {
 
@@ -9,5 +8,17 @@ public class PessoaNegocio {
 
     public void salva(Pessoa pessoa) {
         pessoaDAO.salva(pessoa);
+    }
+
+    public Pessoa pesquisaPor(Long id) {
+       return pessoaDAO.pesquisaPor(id);
+    }
+
+    public void atualiza(Pessoa novaPessoa){
+        pessoaDAO.atualiza(novaPessoa);
+    }
+
+    public void remove(Long id){
+        pessoaDAO.remove(id);
     }
 }

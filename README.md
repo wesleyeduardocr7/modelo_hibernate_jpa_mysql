@@ -91,74 +91,72 @@ Escopo: tipicamente mantem-se uma instância única de EntityManagerFactory para
 #### Copie as classes Programa e Pessoa para o novo projeto
 
 ```java
-package dominio;
+package aplicacao.dominio;
 
 import java.io.Serializable;
 
 public class Pessoa implements Serializable {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	private Integer id;
-	private String nome;
-	private String email;
+  private Integer id;
+  private String nome;
+  private String email;
 
-	public Pessoa() {
-	}
+  public Pessoa() {
+  }
 
-	public Pessoa(Integer id, String nome, String email) {
-		super();
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-	}
+  public Pessoa(Integer id, String nome, String email) {
+    super();
+    this.id = id;
+    this.nome = nome;
+    this.email = email;
+  }
 
-	public Integer getId() {
-		return id;
-	}
+  public Integer getId() {
+    return id;
+  }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+  public void setId(Integer id) {
+    this.id = id;
+  }
 
-	public String getNome() {
-		return nome;
-	}
+  public String getNome() {
+    return nome;
+  }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
-	}
+  @Override
+  public String toString() {
+    return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
+  }
 }
 ```
 
 ```java
 package aplicacao;
 
-import dominio.Pessoa;
-
 public class Programa {
 
-	public static void main(String[] args) {
-		Pessoa p1 = new Pessoa(1, "Carlos da Silva", "carlos@gmail.com");
-		Pessoa p2 = new Pessoa(2, "Joaquim Torres", "joaquim@gmail.com");
-		Pessoa p3 = new Pessoa(3, "Ana Maria", "ana@gmail.com");
+  public static void main(String[] args) {
+    Pessoa p1 = new Pessoa(1, "Carlos da Silva", "carlos@gmail.com");
+    Pessoa p2 = new Pessoa(2, "Joaquim Torres", "joaquim@gmail.com");
+    Pessoa p3 = new Pessoa(3, "Ana Maria", "ana@gmail.com");
 
-		System.out.println(p1);
-		System.out.println(p2);
-		System.out.println(p3);
-	}
+    System.out.println(p1);
+    System.out.println(p2);
+    System.out.println(p3);
+  }
 }
 ```
 
@@ -236,17 +234,17 @@ public class Programa {
 #### Inclua os MAPEAMENTOS na classe de domínio:
 
 ```java
-package dominio;
+package aplicacao.dominio;
 
 import (...)
 
 @Entity
 public class Pessoa implements Serializable {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 	(...)
 ```
 
