@@ -12,9 +12,11 @@ public class ColaboradorDAOImpl extends GenericDAOImpl<Colaborador, Long> implem
         String hql = "FROM Colaborador WHERE id = :id";
 
         Query query = getEntity().createQuery(hql);
+
         query.setParameter("id", id);
 
         List<Colaborador> lista = query.getResultList();
+
         return lista == null || lista.isEmpty() ? null : lista.get(0);
     }
 }

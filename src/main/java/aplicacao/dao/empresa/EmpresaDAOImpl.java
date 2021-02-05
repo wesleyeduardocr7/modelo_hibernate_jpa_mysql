@@ -12,9 +12,11 @@ public class EmpresaDAOImpl extends GenericDAOImpl<Empresa, Long> implements Emp
         String hql = "FROM Empresa WHERE id = :id";
 
         Query query = getEntity().createQuery(hql);
+
         query.setParameter("id", id);
 
         List<Empresa> lista = query.getResultList();
+
         return lista == null || lista.isEmpty() ? null : lista.get(0);
     }
 }

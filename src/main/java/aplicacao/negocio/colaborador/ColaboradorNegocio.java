@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ColaboradorNegocio {
 
-    Colaborador recuperarPor(Long id);
+    Colaborador recuperarPor(Long id) throws Exception;
 
-    List<Colaborador> recuperar();
+    List<Colaborador> recuperar() throws Exception;
 }

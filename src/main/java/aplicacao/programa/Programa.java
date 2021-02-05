@@ -6,7 +6,6 @@ import aplicacao.dto.EmpregadoDTO;
 import aplicacao.negocio.colaborador.ColaboradorNegocioImpl;
 import aplicacao.negocio.empregado.EmpregadoNegocioImpl;
 import aplicacao.negocio.empresa.EmpresaNegocioImpl;
-
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -16,40 +15,100 @@ public class Programa {
     private static EmpresaNegocioImpl empresaNegocio = new EmpresaNegocioImpl();
     private static EmpregadoNegocioImpl empregadoNegocio = new EmpregadoNegocioImpl();
 
-
     public static void main(String[] args) {
 
-        Empresa empresa = new Empresa(null,"WesleyTI","565655565","São Luís");
-        empresaNegocio.salva(empresa);
-        System.out.println("emp1 = " + empresa.toString() + "\n");
+        criarEmpresa(null, "Nokia", "8981", "SLZ");
 
-        Colaborador colaborador01 = new Colaborador(null,"Luis" ,"SI161300121",new BigDecimal(5500), TipoColaborador.CLT);
-        colaborador01.setEmpresa(empresa);
-        colaboradorNegocio.salva(colaborador01);
-        System.out.println("c1 = " + colaborador01.toString() + "\n");
+        criarColaborador(null, 4L, "Luis", "SI161300121", new BigDecimal(5500), TipoColaborador.CLT);
 
-        /*List<EmpregadoDTO> empregadoDTOS = empregadoNegocio.recuperarEmpregadosDTOSPor(Long.valueOf(5));
+        recuperarColaboradorPorId(2L);
 
-        if ((empregadoDTOS.isEmpty())) {
-            System.out.println("Lista de Empregados Vazio");
-        } else {
-            empregadoDTOS.forEach(empregadoDTO -> {
-                System.out.println(empregadoDTO.toString());
-            });
-        }*/
+        recuperarTodosOsColaboradores();
 
-        //Colaborador colaborador = colaboradorNegocio.recuperarPor(Long.valueOf(2));
-        //System.out.println(colaborador.toString());
+        alterarEmpresa(2L, "novaEmpresa", "5555", "SLZ");
 
-        //List<Colaborador> colaboradores = colaboradorNegocio.recuperar();
-        //System.out.println(colaboradores.toString());
+        excluirEmpresaPor(2L);
 
-        //Colaborador colaboradorAlterado = new Colaborador(Long.valueOf(1),"Update","Update", new BigDecimal(4500));
-        //colaboradorNegocio.altera(colaboradorAlterado);
-        //System.out.println(colaboradorAlterado.toString());
+        recuperarEmpregadosPor(2L);
+    }
 
-        //colaboradorNegocio.excluir(Long.valueOf(3));
+    private static void criarEmpresa(Long id, String nomeFantasia, String cnpj, String endereco) {
+        try {
+            Empresa empresa = new Empresa(id, nomeFantasia, cnpj, endereco);
+            empresaNegocio.salva(empresa);
+            System.out.println("empresa = " + empresa.toString() + "\n");
+        } catch (Exception e) {
+            System.out.println("erro = " + e);
+        }
+    }
 
-        System.out.println("Transação Concluída");
+    private static void criarColaborador(Long id, Long idEmpresa, String nome, String matricula, BigDecimal salario, TipoColaborador tipoColaborador) {
+        try {
+            Empresa empresa = empresaNegocio.recuperarPor(idEmpresa);
+            Colaborador colaborador0 = new Colaborador(id, nome, matricula, salario, tipoColaborador);
+            colaborador0.setEmpresa(empresa);
+            colaboradorNegocio.salva(colaborador0);
+            System.out.println("colaborador = " + colaborador0.toString() + "\n");
+        } catch (Exception e) {
+            System.out.println("erro = " + e);
+        }
+    }
+
+    private static void recuperarEmpregadosPor(Long idEmpresa) {
+        try {
+            List<EmpregadoDTO> empregadoDTOS = empregadoNegocio.recuperarEmpregadosDTOSPor(idEmpresa);
+            if ((empregadoDTOS.isEmpty())) {
+                System.out.println("Lista de Empregados Vazia");
+            } else {
+                empregadoDTOS.forEach(empregadoDTO -> {
+                    System.out.println(empregadoDTO.toString());
+                });
+            }
+        } catch (Exception e) {
+            System.out.println("erro = " + e);
+        }
+    }
+
+    private static void recuperarColaboradorPorId(Long id) {
+        try {
+            Colaborador colaborador = colaboradorNegocio.recuperarPor(id);
+            System.out.println(colaborador.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("erro = " + e);
+        }
+    }
+
+    private static void recuperarTodosOsColaboradores() {
+        try {
+            List<Colaborador> colaboradores = colaboradorNegocio.recuperar();
+            System.out.println(colaboradores.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("erro = " + e);
+        }
+
+    }
+
+    private static void alterarEmpresa(Long id, String novoNomeFantasia, String novoCnpj, String novoEndereco) {
+        try {
+            Empresa empresaAlterada = new Empresa(id, novoNomeFantasia, novoCnpj, novoEndereco);
+            empresaNegocio.salva(empresaAlterada);
+            System.out.println(empresaAlterada.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("erro = " + e);
+        }
+    }
+
+    private static void excluirEmpresaPor(Long id) {
+        try {
+            empresaNegocio.excluir(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("erro = " + e);
+        }
     }
 }
+
+

@@ -107,8 +107,6 @@ public class Colaborador implements Serializable{
 				", nome='" + nome + '\'' +
 				", matricula='" + matricula + '\'' +
 				", salario=" + salario +
-				", tipoColaborador=" + tipoColaborador.getDescricao() +
-				", empresa=" + empresa.toString() +
 				'}';
 	}
 }

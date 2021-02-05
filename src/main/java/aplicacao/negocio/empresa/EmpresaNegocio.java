@@ -6,5 +6,5 @@ public interface EmpresaNegocio {
 
     Empresa recuperarPor(Long id);
 
-    List<Empresa> recuperar();
+    List<Empresa> recuperar() throws Exception;
 }

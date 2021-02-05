@@ -2,13 +2,16 @@ package aplicacao.dao.empregado;
 import aplicacao.dao.generic.GenericDAOImpl;
 import aplicacao.dto.EmpregadoDTO;
 import aplicacao.utils.QueryUtils;
+import org.apache.commons.dbutils.ResultSetHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import javax.persistence.Query;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmpregadoDAOImpl extends GenericDAOImpl<EmpregadoDTO, Long> {
+public class EmpregadoDAO extends GenericDAOImpl<EmpregadoDTO, Long> {
 
     public List<EmpregadoDTO> recuperarEmpregadosDTOSPor(Long idEmpresa) {
 
@@ -42,4 +45,20 @@ public class EmpregadoDAOImpl extends GenericDAOImpl<EmpregadoDTO, Long> {
     }
 
 
+    public List<EmpregadoDTO> recuperarEmpregadosDTOS(){
+
+        List<EmpregadoDTO> empregadoDTOS = new ArrayList<>();
+
+        String sql = " select e.id_empresa as idEmpresa, e.nome_fantasia as nomeEmpresa, c.id as idColaborador, c.nome as nomeColaborador, c.salario as salarioColaborador from empresa e inner join colaborador c on c.id_empresa = e.id_empresa ";
+
+        ResultSetHandler<List<EmpregadoDTO>> relatorioContratoDTOBeanListHandler = new BeanListHandler<>(EmpregadoDTO.class);
+
+        try {
+            empregadoDTOS = getRunner().query(sql, relatorioContratoDTOBeanListHandler);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return empregadoDTOS;
+    }
 }

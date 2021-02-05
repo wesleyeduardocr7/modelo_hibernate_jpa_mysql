@@ -5,4 +5,6 @@ import java.util.List;
 public interface EmpregadoNegocio {
 
     List<EmpregadoDTO> recuperarEmpregadosDTOSPor(Long idEmpresa);
+
+    List<EmpregadoDTO> recuperarEmpregadosDTOS();
 }

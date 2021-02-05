@@ -1,22 +1,17 @@
 package aplicacao.negocio.empresa;
 import aplicacao.dao.empresa.EmpresaDAOImpl;
 import aplicacao.dominio.Empresa;
-import java.util.ArrayList;
 import java.util.List;
 
 public class EmpresaNegocioImpl implements EmpresaNegocio {
 
     private EmpresaDAOImpl empresaDAOImpl = new EmpresaDAOImpl();
 
-    public void salva(Empresa empresa) {
-        try {
-            if (empresa.getId() == null) {
-                empresaDAOImpl.salvar(empresa);
-            } else {
-                empresaDAOImpl.alterar(empresa);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+    public void salva(Empresa empresa) throws Exception {
+        if (empresa.getId() == null) {
+            empresaDAOImpl.salvar(empresa);
+        } else {
+            empresaDAOImpl.alterar(empresa);
         }
     }
 
@@ -26,32 +21,12 @@ public class EmpresaNegocioImpl implements EmpresaNegocio {
     }
 
     @Override
-    public List<Empresa> recuperar() {
-
-        List<Empresa> empresas = new ArrayList<>();
-
-        try {
-            empresas = empresaDAOImpl.recuperar();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
+    public List<Empresa> recuperar() throws Exception {
+        List<Empresa> empresas = empresaDAOImpl.recuperar();
         return empresas;
     }
 
-    public void altera(Empresa novEmpresa) {
-        try {
-            empresaDAOImpl.alterar(novEmpresa);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void excluir(Long id) {
-        try {
-            empresaDAOImpl.excluir(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void excluir(Long id) throws Exception {
+        empresaDAOImpl.excluir(id);
     }
 }

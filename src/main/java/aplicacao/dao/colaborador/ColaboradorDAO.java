@@ -4,5 +4,5 @@ import aplicacao.dominio.Colaborador;
 
 public interface ColaboradorDAO extends GenericDAO<Colaborador, Long> {
 
-    Colaborador recuperaPor(Long id);
+    Colaborador recuperaPor(Long id) throws Exception;
 }
