@@ -1,6 +1,7 @@
 package aplicacao.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 public class EmpregadoDTO implements Serializable {
 
@@ -61,5 +62,18 @@ public class EmpregadoDTO implements Serializable {
                 ", nomeColaborador='" + nomeColaborador + '\'' +
                 ", salarioColaborador=" + salarioColaborador +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EmpregadoDTO that = (EmpregadoDTO) o;
+        return Objects.equals(idEmpresa, that.idEmpresa) && Objects.equals(nomeEmpresa, that.nomeEmpresa) && Objects.equals(idColaborador, that.idColaborador) && Objects.equals(nomeColaborador, that.nomeColaborador) && Objects.equals(salarioColaborador, that.salarioColaborador);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEmpresa, nomeEmpresa, idColaborador, nomeColaborador, salarioColaborador);
     }
 }
